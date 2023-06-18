@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
 import User from './components/users/User';
+import Home from './components/pages/Home';
 import About from './components/pages/About'
-import Search from './components/users/Search';
+import NotFound from './components/pages/NotFound';
 import Alert from './components/layout/Alert';
 
 // Context States
@@ -14,7 +14,6 @@ import AlertState from './context/alert/AlertState';
 import './App.css';
 
 const App = () => {
-
   return (
     <GithubState>
       <AlertState>
@@ -26,17 +25,13 @@ const App = () => {
 
             {/* React router */}
             <Routes>
-              <Route path='/' element={
-                <Fragment>
-                  <Search />
+              <Route path='/' element={ <Home /> } />
 
-                  <Users />
-                </Fragment>
-              } />
-
-              <Route path='/about' element={<About />}></Route>
+              <Route path='/about' element={<About />} />
 
               <Route path='/user/:login' element={<User />} />
+              
+              <Route element={<NotFound />} />
 
             </Routes>
           </div>
