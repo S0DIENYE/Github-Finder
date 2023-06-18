@@ -17,7 +17,15 @@ const Search = () => {
         } else {
             // Passing the user input up through props
             githubContext.searchUsers(text);
-            setText('')
+            
+            
+            // setTimeout(() => {
+            //     if(githubContext.users.length <= 0){
+            //         alertContext.setAlert('Please enter a valid username', 'light')
+            //     };
+            // }, 3000)
+
+            setText('');
         }
     }
 

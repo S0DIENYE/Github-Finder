@@ -58,7 +58,7 @@ const GithubState = props => {
             type: GET_REPOS,
             payload: res.data
         })
-      }
+    };
 
     // Clear Users
     const clearUsers = () => dispatch({type: CLEAR_USERS})
