@@ -1,24 +1,26 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import GithubContext from '../../context/github/githubContext';
 
-const User = (props) => {
-
-  const { getUser, getUsersRepos, user, repos, loading } = props;
-
+const User = () => {
   const routeParams = useParams();
+  const githubContext = useContext(GithubContext);
+
+  // Pull out state from githubContext
+  const { getUser, user, getUsersRepos, repos, loading } = githubContext;
 
   useEffect(() => {
     // Send request to get user details
     getUser(routeParams.login)
     getUsersRepos(routeParams.login)
 
-  }, [getUser, routeParams.login, getUsersRepos])
-
-  console.log(repos);
+    // you put the condition on which useEffect should reiterate/run/re-run
+    // eg. if repos change, reiterate effect
+    // eslint-disable-next-line
+  }, [])
 
   const {
     name,
@@ -35,7 +37,6 @@ const User = (props) => {
     public_gists,
     hireable,
   } = user;
-
 
   if (loading) return <Spinner />
 
@@ -106,14 +107,6 @@ const User = (props) => {
       <Repos repos={repos} />
     </Fragment>
   )
-}
-
-User.propTypes = {
-  loading: PropTypes.bool,
-  user: PropTypes.object.isRequired,
-  repos: PropTypes.array.isRequired,
-  getUser: PropTypes.func.isRequired,
-  getUserRepos: PropTypes.func.isRequired
 }
 
 export default User;

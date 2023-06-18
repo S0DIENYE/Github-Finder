@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import GithubContext from '../../context/github/githubContext';
 
-const UserItem = ({ user: { login, avatar_url, html_url } }) => {
-    // taking out user from props then taking out specific items from user
-
-    // const {login, avatar_url, html_url} = props.user
+const UserItem = () => {
+    const githubContext = useContext(GithubContext);
+    const { user: { login, avatar_url, html_url } } = githubContext;
 
     return (
         <div className="card text-center">
@@ -23,8 +22,4 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
     )
 }
 
-UserItem.propTypes = {
-    user: PropTypes.object.isRequired
-};
-
-export default UserItem
+export default UserItem;
