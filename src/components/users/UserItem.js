@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import GithubContext from '../../context/github/githubContext';
 
-const UserItem = () => {
+const UserItem = ({ user: { login, avatar_url } }) => {
     const githubContext = useContext(GithubContext);
-    const { user: { login, avatar_url, html_url } } = githubContext;
 
     return (
         <div className="card text-center">
