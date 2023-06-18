@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
 import GithubContext from '../../context/github/githubContext';
+
+import './usersStyle.css';
 
 const Users = () =>  {
     const githubContext = useContext(GithubContext);
@@ -12,7 +14,7 @@ const Users = () =>  {
     } else{
 
         return (
-            <div style={userStyle}>
+            <div id="user-card" style={{ marginTop: '10px' }}>
                 {
                     users.map(user => {
                         return <UserItem key={user.id} user={user} />
@@ -22,12 +24,6 @@ const Users = () =>  {
         )
     }
 
-}
-
-const userStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '1rem'
 }
 
 export default Users;
