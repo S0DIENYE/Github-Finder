@@ -1,3 +1,57 @@
 input {
-    border: 1px solid red;
+    padding: 0.7rem !important;
+    /* border: 1px solid red!important; */
+    border-radius: 4px;
+}
+
+input[type="text"]:focus {
+    outline: 0 !important;
+    color: #212529;
+    background-color: #fff;
+    border-color: #747474;
+    box-shadow: 0 0 0 0.25rem #cccccc9d !important;
+}
+
+#card {
+    padding: 1rem;
+    background: white;
+    border-radius: 7px;
+    height: 280px;
+    max-height: 280px;
+    padding-bottom: 0.5rem!important;
+    box-shadow: 0 .125rem .25rem rgba(194, 192, 192, 0.75) !important;
+}
+
+#card img{
+    height: 150px;
+    width: 100%!important;
+    border-radius: 4px;
+}
+
+@media(max-width: 991px) {
+    #card {
+        height: 313px;
+        max-height: 313px;
+    }
+    #card img{
+        height: 185px;
+    }
+}
+
+#card h3::first-letter{
+    text-transform: capitalize;
+}
+
+#card a.btn{
+    margin: 0!important;
+    margin-top: 15px!important;
+    width: 100%!important;
+    border-radius: 7px;
+    top: 0!important;
+}
+
+@media(max-width: 500px) {
+    .container{
+        padding: 0 1rem!important;
+    }
 }

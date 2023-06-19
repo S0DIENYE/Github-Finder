@@ -37,7 +37,8 @@ const App = () => {
 
             </Routes>
           </div>
-            <Loader />
+          <Loader />
+          
         </div>
       </AlertState>
     </GithubState>

@@ -14,7 +14,7 @@ const Users = () =>  {
     } else{
 
         return (
-            <div id="user-card" style={{ marginTop: '10px' }}>
+            <div id="user-card" style={{ marginTop: '30px' }}>
                 {
                     users.map(user => {
                         return <UserItem key={user.id} user={user} />
