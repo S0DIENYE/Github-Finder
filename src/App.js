@@ -12,6 +12,8 @@ import GithubState from './context/github/GithubState';
 import AlertState from './context/alert/AlertState';
 
 import './App.css';
+import './style.css';
+import Loader from './components/Loader/Loader';
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
 
             </Routes>
           </div>
+            <Loader />
         </div>
       </AlertState>
     </GithubState>

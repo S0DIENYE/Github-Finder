@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toggleLoader } from '../Loader/Loader'
 
 const Navbar = ({ icon, title }) => {
 
@@ -13,10 +14,10 @@ const Navbar = ({ icon, title }) => {
       </h1>
 
       <ul>
-        <li>
+        <li onClick={toggleLoader}>
           <Link to='/'>Home</Link>
         </li>
-        <li>
+        <li onClick={toggleLoader}>
           <Link to='/about'>About</Link>
         </li>
       </ul>
