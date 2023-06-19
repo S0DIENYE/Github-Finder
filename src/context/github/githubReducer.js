@@ -3,7 +3,8 @@ import {
     SET_LOADING,
     CLEAR_USERS,
     GET_USERS,
-    GET_REPOS
+    GET_REPOS,
+    INVALID_QUERY
 } from '../types';
 
 // Reducer Function
@@ -15,6 +16,12 @@ export default (state, action) => {
                 ...state,
                 users: action.payload,
                 loading: false,
+            }
+
+        case INVALID_QUERY:
+            return {
+                ...state,
+                usersLength: action.payload,
             }
 
         case GET_USERS:

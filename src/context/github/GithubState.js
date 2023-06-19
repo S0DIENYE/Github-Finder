@@ -7,7 +7,8 @@ import {
     SET_LOADING,
     CLEAR_USERS,
     GET_USERS,
-    GET_REPOS
+    GET_REPOS,
+    INVALID_QUERY
 } from '../types';
 
 const GithubState = props => {
@@ -15,7 +16,8 @@ const GithubState = props => {
         users: [],
         user: {},
         repos: [],
-        loading: false
+        loading: false,
+        usersLength: null,
     }
 
     // dipatch type to our reducer
@@ -33,6 +35,8 @@ const GithubState = props => {
             type: SEARCH_USERS,
             payload: res.data.items
         })
+
+        return res;
     }
 
     // Get User
@@ -66,10 +70,19 @@ const GithubState = props => {
     // Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING });
 
+    // Set Loading
+    const invalidQuery = async (username) => {
+        const res = await searchUsers(username);
+        dispatch({ type: INVALID_QUERY, payload: res.data.items.length });
+
+        return res;
+    };
+
     return <GithubContext.Provider
         // We set here (value) anything we want to pass available from github context to our entire app
         value={{
             users: state.users,
+            usersLength: state.usersLength,
             user: state.user,
             repos: state.repos,
             loading: state.loading,
@@ -77,6 +90,7 @@ const GithubState = props => {
             clearUsers,
             getUser,
             getUsersRepos,
+            invalidQuery,
         }} >
 
         {props.children}

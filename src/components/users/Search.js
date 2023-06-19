@@ -6,25 +6,29 @@ const Search = () => {
     // Initilaize github context
     const githubContext = useContext(GithubContext);
     const alertContext = useContext(AlertContext);
-    
+
     const [text, setText] = useState('');
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         if (text === '') {
             alertContext.setAlert('Please enter something', 'light')
         } else {
-            // Passing the user input up through props
-            githubContext.searchUsers(text);
-            
-            
-            // setTimeout(() => {
-            //     if(githubContext.users.length <= 0){
-            //         alertContext.setAlert('Please enter a valid username', 'light')
-            //     };
-            // }, 3000)
+            githubContext.searchUsers(text)
+            let res;
+            res = await githubContext.invalidQuery(text);
+            res = res.data.total_count;
 
+            var getUsersLength = setInterval(() => {
+                if(res <= 0) alertContext.setAlert('Please enter a valid username', 'light');
+            }, 100);
+            
+            // After 5 seconds, cancel the interval
+            setTimeout(() => {
+                clearInterval(getUsersLength);
+            }, 4000);
+            
             setText('');
         }
     }
