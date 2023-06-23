@@ -9,6 +9,8 @@ import Linkedin from '../img/linkedin.svg';
 import Instagram from '../img/instagram.svg';
 import Twitter from '../img/twitter.svg';
 
+import { toggleLoader } from '../../Loader/Loader';
+
 
 const Footer = () => {
   return (
@@ -25,8 +27,10 @@ const Footer = () => {
                     <span>+234 902 233 8588</span>
                 </li>
                 <li id='mail'>
-                    <img src={Mail} alt="mail" />
-                    <span>dienyecodes@gmail.com</span>
+                    <a href="mailto:dienyecodes@gmail.com">
+                        <img src={Mail} alt="mail" />
+                        <span>dienyecodes@gmail.com</span>
+                    </a>
                 </li>
                 <li id='location'>
                     <img src={Location} alt="location" />
@@ -36,15 +40,15 @@ const Footer = () => {
 
             <ul className="d-flex">
                 <h4>Links</h4>
-                <li id='home'>
+                <li id='home' onClick={toggleLoader}>
                     <Link to="/">Home</Link>
                 </li>
 
-                <li id='about'>
+                <li id='about' onClick={toggleLoader}>
                     <Link to="/about">About</Link>
                 </li>
 
-                <li id='contact'>
+                <li id='contact' onClick={toggleLoader}>
                     <Link to="/contact">Contact</Link>
                 </li>
 

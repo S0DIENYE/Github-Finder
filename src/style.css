@@ -104,9 +104,10 @@ input[type="text"]:focus {
     # Footer
 ------------------------*/
 #footer {
-    margin-top: 1rem;
+    /* position: absolute;
+    bottom: auto; */
+    margin-top: 20vh;
     width: 100%;
-    bottom: 0;
     background: #000;
     color: #fff;
     padding: 2rem 1rem;
@@ -153,6 +154,7 @@ input[type="text"]:focus {
 #footer ul li{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 #footer ul li a{

@@ -25,8 +25,10 @@ const Navbar = ({ icon, title }) => {
     return (
         <nav className="navbar translucent">
             <h1 className='logo'>
-                <i className={icon} />
-                {title}
+                <Link to='/'>
+                    <i className={icon} />
+                    {title}
+                </Link>
             </h1>
 
             <ul className='nav-list'>

@@ -45,7 +45,7 @@ const App = () => {
           </div>
           </div>
 
-          {/* <Loader /> */}
+          <Loader />
           
           <Footer />
         </div>
